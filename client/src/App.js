@@ -2,11 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react"
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL
+
 function App() {
   const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("/api")
+    fetch(SERVER_URL + "/api")
     .then((res) => res.json())
     .then((data) => {console.log(data); setData(data.message)});
   }, []);
